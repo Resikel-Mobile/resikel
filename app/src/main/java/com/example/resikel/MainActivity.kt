@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.resikel.auth.welcomeResikel
 import com.example.resikel.navigation.resikelNavigation
+import com.example.resikel.report.ReportScreen
 import com.example.resikel.ui.theme.ResikelTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
                 Surface( modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background) {
                     resikelNavigation()
+//                    ReportScreen()
                 }
             }
         }
