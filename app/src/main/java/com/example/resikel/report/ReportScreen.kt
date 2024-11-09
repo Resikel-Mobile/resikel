@@ -107,7 +107,7 @@ fun ReportScreen(modifier: Modifier = Modifier) {
     //gallery picker
     val photoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
-        onResult = { uri -> selectedImageUri = uri }
+        onResult = { selectedImageUri = uri }
     )
 
     //TODO: Buat customize top Bar
@@ -262,7 +262,9 @@ fun ReportScreen(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .height(80.dp)
                         .padding(top = 8.dp, start = 22.dp, end = 22.dp, bottom = 12.dp),
-                    onClick = {}) {
+                    onClick = {
+                        //TODO: ke report Screen dengan membawa data URI, description, location, data reporter
+                    }) {
                     Text(
                         text = "Continue",
                         fontWeight = FontWeight.Normal,
@@ -297,7 +299,6 @@ fun ReportScreen(modifier: Modifier = Modifier) {
                                     containerColor = primaryGreen,
                                 ),
                                 shape = RoundedCornerShape(10.dp),
-                                //TODO: IMPLEMENT TAKE PICTURE
                                 onClick = {
                                     val permissionCheckResult =
                                         ContextCompat.checkSelfPermission(
@@ -316,7 +317,6 @@ fun ReportScreen(modifier: Modifier = Modifier) {
                             OutlinedButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 shape = RoundedCornerShape(10.dp),
-                                //TODO: IMPLEMENT OPEN GALLERY
                                 onClick = {
                                     photoPickerLauncher.launch(
                                         PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)

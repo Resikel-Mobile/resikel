@@ -26,8 +26,8 @@ class MainActivity : ComponentActivity() {
             ResikelTheme {
                 Surface( modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background) {
-                    resikelNavigation()
-//                    ReportScreen()
+//                    resikelNavigation()
+                    ReportScreen()
                 }
             }
         }
