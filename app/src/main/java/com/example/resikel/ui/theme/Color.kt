@@ -17,3 +17,5 @@ val secondaryGreen = Color(0xFF59A359)
 val primaryWhite = Color(0xFFFCFFFC)
 val primaryGrey = Color(0xFFD9D9D9)
 val primaryText = Color(0xFF404040)
+
+val softWhite = Color(0xFFEAFFEA)
