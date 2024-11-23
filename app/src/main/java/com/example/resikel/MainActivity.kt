@@ -33,8 +33,8 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    resikelNavigation()
 //                    ReportScreen()
-                    val mapViewModel = MapViewModel()
-                    MapScreen(mapViewModel)
+//                    val mapViewModel = MapViewModel()
+//                    MapScreen(mapViewModel)
 //                    MyCommunity()
                 }
             }

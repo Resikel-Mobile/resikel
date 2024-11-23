@@ -1,12 +1,17 @@
 package com.example.resikel.location
 
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.os.Build
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -39,6 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import com.example.resikel.R
 import com.example.resikel.report.SummaryReport
 import com.example.resikel.ui.theme.ResikelTheme
 import com.example.resikel.ui.theme.primaryGreen
@@ -52,8 +59,11 @@ import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
+import okio.IOException
+import java.util.Locale
+import kotlin.math.ln
 
-//TODO: GET DATA FROM API & IMPLEMENT CURRENT LOCATION N SET POLYLINE TO DESINATION ROUTE
+//TODO: GET DATA FROM API & IMPLEMENT CURRENT LOCATION N SET POLYLINE TO DESTINATION ROUTE
 @Composable
 fun MapScreen(mapViewModel: MapViewModel) {
     val location = LatLng(40.9971, 29.1007)
@@ -61,6 +71,8 @@ fun MapScreen(mapViewModel: MapViewModel) {
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(location, 15f)
     }
+
+    val address by mapViewModel.userAddress
 
     //get current location
     val context = LocalContext.current
@@ -94,6 +106,7 @@ fun MapScreen(mapViewModel: MapViewModel) {
             }
         }
     }
+
     Column() {
         //Google Map Section
         GoogleMap(
@@ -103,22 +116,23 @@ fun MapScreen(mapViewModel: MapViewModel) {
             cameraPositionState = cameraPositionState
         ) {
             //TODO: Tambahkan beberapa marker disini
-            /*Marker(
+            Marker(
                 state = MarkerState(position = location),
                 title = "Contoh Lokasi TPS 1"
             )
             Marker(
                 state = MarkerState(position = location2),
                 title = "Contoh Lokasi TPS 2"
-            )*/
+            )
             //TODO: Nanti untuk custom Marker / Pembeda Tiap TPS
             /*MarkerComposable(state = MarkerState(position = location)) {
                 Image(
-                    painter = painterResource(),
+                    modifier = Modifier.size(48.dp),
+                    painter = painterResource(R.drawable.bgcolor),
                     contentDescription = null,
                 )
             }*/
-            //TODO: TESTING GET LOCATION
+            /*//TODO: TESTING GET LOCATION
             userLocation?.let {
                 Marker(
                     state = MarkerState(position = it),
@@ -126,7 +140,7 @@ fun MapScreen(mapViewModel: MapViewModel) {
                     snippet = "Current Location Snippet"
                 )
                 cameraPositionState.position = CameraPosition.fromLatLngZoom(it, 10f)
-            }
+            }*/
         }
         //Route Section
         Column(modifier = Modifier.weight(1f)) {
@@ -163,9 +177,13 @@ fun MapScreen(mapViewModel: MapViewModel) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon(
                         imageVector = Icons.Default.Home,
-                        contentDescription = null
+                        contentDescription = null, modifier = Modifier.clickable {
+                            userLocation?.let {
+                                mapViewModel.getMarkerAddress(it.latitude, it.longitude, context)
+                            }
+                        }
                     )
-                    Text(text = "Jl. Budi Mulia Gang Kelinci RT 001 RW 002 Batam")
+                    Text(text = address)
                 }
                 HorizontalDivider()
                 //TODO: CLICK DI MARKER MAP UNTUK MENDAPATKAN LOKASI DESTINATION
@@ -182,6 +200,7 @@ fun MapScreen(mapViewModel: MapViewModel) {
 
     }
 }
+
 
 /*
 @Preview(showBackground = true)

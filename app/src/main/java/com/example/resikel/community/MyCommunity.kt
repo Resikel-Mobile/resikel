@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -49,13 +50,20 @@ fun MyCommunity(modifier: Modifier = Modifier) {
             title = { Text(text = "Community") },
             navigationIcon = {
                 IconButton(onClick = {}) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    Box(
+                        modifier = Modifier
+                            .background(color = Color.White, CircleShape)
+                            .padding(8.dp)
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    }
+
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = primaryGreen,
                 titleContentColor = primaryWhite,
-                navigationIconContentColor = primaryWhite
+//                navigationIconContentColor = primaryWhite
             )
         )
     }
@@ -115,7 +123,11 @@ fun MyCommunity(modifier: Modifier = Modifier) {
                         modifier = Modifier.size(64.dp)
                     )
                     Text(text = "Resikel", fontWeight = FontWeight.Bold)
-                    Image(imageVector = Icons.Default.CheckCircle, contentDescription = null)
+                    Icon(
+                        imageVector = Icons.Default.CheckCircle,
+                        contentDescription = null,
+                        tint = Color.Cyan
+                    )
                 }
                 HorizontalDivider()
                 //Community Item - OnClick menuju halaman Announcement
@@ -157,7 +169,11 @@ fun MyCommunity(modifier: Modifier = Modifier) {
                     ) {
                         Row {
                             Text(text = "Kantor Pejantara", fontWeight = FontWeight.Bold)
-                            Image(imageVector = Icons.Default.CheckCircle, contentDescription = null)
+                            Icon(
+                                imageVector = Icons.Default.CheckCircle,
+                                contentDescription = null,
+                                tint = Color.Cyan
+                            )
                         }
                         Text(
                             text = "Silahkan Mang bisa datang langsung Kesini",

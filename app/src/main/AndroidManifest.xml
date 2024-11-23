@@ -22,7 +22,7 @@
         <!-- TODO: ISI API KEY google map -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="MASUKAN_API_DISINI" />
+            android:value="AIzaSyDrqMiqi5zF9KIdE_ZJCKEssOgDy2X8JMc" />
 
         <activity
             android:name=".MainActivity"
