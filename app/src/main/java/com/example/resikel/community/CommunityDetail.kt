@@ -74,6 +74,25 @@ fun CommunityDetail(modifier: Modifier = Modifier) {
                     contentDescription = null, tint = Color.Cyan
                 )
             }
+            Row(
+                verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text(
+                    text = "Community",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                )
+                Text(
+                    text = "|",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                )
+                Text(
+                    text = "4 Groups",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                )
+            }
             Spacer(modifier = Modifier.height(8.dp))
             HorizontalDivider()
             Text("Community Info", fontWeight = FontWeight.SemiBold)

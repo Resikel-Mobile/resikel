@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -116,13 +117,18 @@ fun ReportScreen(modifier: Modifier = Modifier) {
             title = { Text(text = "Create Report") },
             navigationIcon = {
                 IconButton(onClick = {}) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    Box(
+                        modifier = Modifier
+                            .background(color = Color.White, CircleShape)
+                            .padding(8.dp)
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    }
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = primaryGreen,
                 titleContentColor = primaryWhite,
-                navigationIconContentColor = primaryWhite
             )
         )
     }) { innerPadding ->

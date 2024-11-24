@@ -53,13 +53,18 @@ fun SummaryReport(modifier: Modifier = Modifier) {
             title = { Text(text = "Summary Report") },
             navigationIcon = {
                 IconButton(onClick = {}) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    Box(
+                        modifier = Modifier
+                            .background(color = Color.White, CircleShape)
+                            .padding(8.dp)
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                    }
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = primaryGreen,
                 titleContentColor = primaryWhite,
-                navigationIconContentColor = primaryWhite
             )
         )
     }) { innerPadding ->

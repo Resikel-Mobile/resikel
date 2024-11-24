@@ -95,7 +95,7 @@ fun CommunityScreen(modifier: Modifier = Modifier) {
                                         BorderStroke(1.dp, Color.White),
                                         RoundedCornerShape(15.dp)
                                     )
-                                    .padding(4.dp)
+                                    .padding(2.dp)
                             ) {
                                 Text(
                                     text = "Community",
@@ -112,7 +112,7 @@ fun CommunityScreen(modifier: Modifier = Modifier) {
                                         BorderStroke(1.dp, Color.White),
                                         RoundedCornerShape(15.dp)
                                     )
-                                    .padding(4.dp)
+                                    .padding(2.dp)
                             ) {
                                 Text(
                                     text = "View Member",

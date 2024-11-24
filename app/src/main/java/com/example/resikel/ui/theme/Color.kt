@@ -18,5 +18,7 @@ val primaryWhite = Color(0xFFFCFFFC)
 val primaryGrey = Color(0xFFD9D9D9)
 val primaryText = Color(0xFF404040)
 val redText = Color(0xFFFF0D11)
+val chatBackground = Color(0xFFF3F3F3)
+val chatTextFieldBg = Color(0xFFC4C4C4)
 
 val softWhite = Color(0xFFEAFFEA)

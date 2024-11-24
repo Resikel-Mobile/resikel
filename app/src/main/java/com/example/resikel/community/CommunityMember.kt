@@ -61,7 +61,7 @@ fun CommunityMember(modifier: Modifier = Modifier) {
         )
     }) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize().padding(top = 16.dp, start = 8.dp, end = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            //TODO: nanti pake lazy row
+            //TODO: nanti pake lazy Colum
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painterResource(R.drawable.user_placeholder), contentDescription = null, modifier = Modifier.size(48.dp))
                 Text("You", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
